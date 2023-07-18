@@ -143,6 +143,7 @@ input[type="checkbox"] {
  height: 25px;
   border: 2px solid #828282;
   border-radius: 4px;
+  color: black;
 }
 
 input[type="checkbox"]:checked {
