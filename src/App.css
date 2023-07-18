@@ -40,6 +40,7 @@
 .hstack {
   display: flex;
   align-items: center;
+  gap: 8px;
 }
 
 .justify-between {
@@ -118,7 +119,6 @@ input[name="addtodo-input"]::placeholder {
   height: 40px;
   border-radius: 4px;
   font-size: 12px;
-  gap: 8px;
   justify-content: center;
   margin-left: auto;
   margin-top: 32px;
@@ -136,10 +136,6 @@ input[name="addtodo-input"]::placeholder {
 
 .todo {
   margin-bottom: 27px;
-}
-
-.todo .hstack {
-  gap: 6px;
 }
 
 input[type="checkbox"] {
