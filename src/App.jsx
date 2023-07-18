@@ -68,7 +68,7 @@ function App() {
 
   // Delete Completed Todos
   function deleteTodos() {
-    setTodos([])
+    setTodos(todos.filter(todo => todo.completed === false))
   }
 
   // Complete Todo
