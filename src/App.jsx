@@ -1,4 +1,4 @@
-import { useState , useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom';
 import './App.css'
 import All from './pages/All'
@@ -9,6 +9,8 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 
 function App() {
+  const [active, setActive] = useState('')
+
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -35,23 +37,24 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    loadFromLocalStorage()
-  }, [])
+  // useEffect(() => {
+  //   loadFromLocalStorage()
+  // }, [])
 
   // Save to Local Storage
   function saveToLocalStorage() {
     localStorage.setItem('todos', JSON.stringify(todos));
   }
 
-  useEffect(() => {
-    window.addEventListener('beforeunload', saveToLocalStorage)
+  // useEffect(() => {
+  //   window.addEventListener('beforeunload', saveToLocalStorage)
 
-    return () => {
-      window.removeEventListener('beforeunload', saveToLocalStorage)
-    }
+  //   return () => {
+  //     window.removeEventListener('beforeunload', saveToLocalStorage)
+  //   }
 
-  }, [todos])
+  // }, [todos])
+
 
   // Add todo
   function addTodo(todo) {
@@ -72,8 +75,13 @@ function App() {
   }
 
   // Complete Todo
-  function completeTodo(todoId) {
-    const updatedTodo = todos.map(todo => todo.id === todoId ? { ...todo, completed: !todo.completed } : todo)
+  function completeTodo(todoId, e) {
+    // console.log(e)
+    const updatedTodo = todos.map(todo => todo.id === todoId ?
+      // todo.completed = e.currentTarget.checked
+      { ...todo, completed: e.currentTarget.checked }
+      : todo
+    )
     setTodos(updatedTodo)
     // console.log(todoId)
   }
@@ -81,12 +89,12 @@ function App() {
   return (
     <>
       <Header />
-      <Navbar />
+      <Navbar active={active} setActive={setActive} />
 
       <Routes>
-        <Route index element={<All todos={todos} completeTodo={completeTodo} addTodo={addTodo} />} />
-        <Route path='/active' element={<Active todos={todos} completeTodo={completeTodo} addTodo={addTodo} />} />
-        <Route path='/completed' element={<Completed todos={todos} completeTodo={completeTodo} deleteTodo={deleteTodo} deleteTodos={deleteTodos} />} />
+        <Route index element={<All todos={todos} completeTodo={completeTodo} addTodo={addTodo} setActive={setActive} />} />
+        <Route path='/active' element={<Active todos={todos} completeTodo={completeTodo} addTodo={addTodo} setActive={setActive} />} />
+        <Route path='/completed' element={<Completed todos={todos} completeTodo={completeTodo} deleteTodo={deleteTodo} deleteTodos={deleteTodos} setActive={setActive} />} />
       </Routes>
 
       <Footer />

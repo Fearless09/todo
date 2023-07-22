@@ -12,10 +12,10 @@ function Addtodo({ addTodo }) {
 
     return (
         <div className='addtodo'>
-            <div className="hstack justify-between">
-                <input type="text" placeholder='add details' value={text} onChange={e => setText(e.target.value)} name="addtodo-input" id="addtodo-input" />
-                <button className='btn btn-primary' onClick={addButton}>Add</button>
-            </div>
+            <form className="hstack justify-between" onSubmit={addButton}>
+                <input type="text" placeholder='add details' value={text} onChange={e => setText(e.target.value)} name="addtodo-input" id="addtodo-input" required />
+                <button type='submit' className='btn btn-primary'>Add</button>
+            </form>
         </div>
     )
 }

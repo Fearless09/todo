@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Addtodo from '../components/Addtodo'
 import Todos from '../components/Todos'
 
-function Active({ todos, completeTodo, addTodo }) {
+function Active({ todos, completeTodo, addTodo, setActive }) {
     const del = false
+    useEffect(() => {
+        setActive('active')
+    }, [])
     const newTodos = todos.filter(todo => todo.completed === false)
 
     return (

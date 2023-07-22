@@ -62,11 +62,44 @@
   font-family: 'Montserrat', sans-serif;
   color: black;
   padding: 0.25rem 0.25rem 15px;
+  position: relative;
 }
 
-.active {
-  border-bottom: 4px solid #2F80ED;
-  /* border-radius: 4px; */
+.active::after {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  bottom: 0;
+  left: 50%;
+  translate: -50% 0%;
+  content: '';
+  animation: w-100-ani linear 200ms forwards;
+  background: #2F80ED;
+  border-radius: 4px 4px 0 0;
+}
+
+@keyframes w-100-ani {
+  from {
+    /* width: 0%; */
+    translate: -50% -50%;
+  }
+
+  25% {
+    translate: -50% 100%;
+  }
+
+  50% {
+    translate: -50% -50%;
+  }
+
+  75% {
+    translate: -50% 100%;
+  }
+
+  to {
+    /* width: 100%; */
+    translate: -50% 0%;
+  }
 }
 
 .all {
@@ -100,6 +133,14 @@ input[name="addtodo-input"]::placeholder {
   outline: none;
   font-weight: 600;
   font-family: 'Montserrat', sans-serif;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn:active {
+  scale: 0.98;
 }
 
 .btn-primary {
@@ -140,7 +181,7 @@ input[name="addtodo-input"]::placeholder {
 
 input[type="checkbox"] {
   width: 25px;
- height: 25px;
+  height: 25px;
   border: 2px solid #828282;
   border-radius: 4px;
   color: black;

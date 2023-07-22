@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Addtodo from '../components/Addtodo'
 import Todos from '../components/Todos'
 
-function All({ todos, completeTodo, addTodo }) {
+function All({ todos, completeTodo, addTodo, setActive }) {
+    useEffect(() => {
+        setActive('all')
+    }, [])
     const del = false
     return (
         <div className='container all'>
