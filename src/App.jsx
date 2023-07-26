@@ -48,14 +48,14 @@ function App() {
     localStorage.setItem('todos', JSON.stringify(todos));
   }
 
-  // useEffect(() => {
-  //   window.addEventListener('beforeunload', saveToLocalStorage)
+  useEffect(() => {
+    window.addEventListener('beforeunload', saveToLocalStorage)
 
-  //   return () => {
-  //     window.removeEventListener('beforeunload', saveToLocalStorage)
-  //   }
+    return () => {
+      window.removeEventListener('beforeunload', saveToLocalStorage)
+    }
 
-  // }, [todos])
+  }, [todos])
 
 
   // Add todo
