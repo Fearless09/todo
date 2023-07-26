@@ -10,7 +10,7 @@ function Active({ todos, completeTodo, addTodo, setActive }) {
     const newTodos = todos.filter(todo => todo.completed === false)
 
     return (
-        <div className='container all'>
+        <div className='container all' data-aos='zoom-in'>
             <Addtodo addTodo={addTodo} />
             <Todos todos={newTodos} completeTodo={completeTodo} del={del} />
             {newTodos.length > 0 ? ''

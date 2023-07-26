@@ -1,8 +1,8 @@
-import React from 'react'
-
-import Todo from './Todo'
+import React from "react"
+import Todo from '../components/Todo'
 
 function Todos({ todos, completeTodo, del, deleteTodo }) {
+
     return (
         <div className='todos'>
             {todos.map((todo, index) => (

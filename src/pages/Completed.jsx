@@ -9,7 +9,7 @@ function Completed({ todos, deleteTodo, completeTodo, deleteTodos, setActive }) 
     const newTodos = todos.filter(todo => todo.completed === true)
 
     return (
-        <div className='container'>
+        <div className='container' data-aos='fade-up-left'>
             <Todos todos={newTodos} completeTodo={completeTodo} deleteTodo={deleteTodo} del={del} />
 
             {newTodos.length > 0 ?

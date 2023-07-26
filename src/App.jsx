@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom';
+import Aos from 'aos'
 import './App.css'
 import All from './pages/All'
 import Active from './pages/Active';
@@ -37,9 +38,10 @@ function App() {
     }
   }
 
-  // useEffect(() => {
-  //   loadFromLocalStorage()
-  // }, [])
+  useEffect(() => {
+    Aos.init()
+    loadFromLocalStorage()
+  }, [])
 
   // Save to Local Storage
   function saveToLocalStorage() {
@@ -92,9 +94,17 @@ function App() {
       <Navbar active={active} setActive={setActive} />
 
       <Routes>
-        <Route index element={<All todos={todos} completeTodo={completeTodo} addTodo={addTodo} setActive={setActive} />} />
-        <Route path='/active' element={<Active todos={todos} completeTodo={completeTodo} addTodo={addTodo} setActive={setActive} />} />
-        <Route path='/completed' element={<Completed todos={todos} completeTodo={completeTodo} deleteTodo={deleteTodo} deleteTodos={deleteTodos} setActive={setActive} />} />
+        <Route index element={
+          <All todos={todos} completeTodo={completeTodo} addTodo={addTodo} setActive={setActive} />
+        } />
+
+        <Route path='/active' element={
+          <Active todos={todos} completeTodo={completeTodo} addTodo={addTodo} setActive={setActive} />
+        } />
+
+        <Route path='/completed' element={
+          <Completed todos={todos} completeTodo={completeTodo} deleteTodo={deleteTodo} deleteTodos={deleteTodos} setActive={setActive} />
+        } />
       </Routes>
 
       <Footer />
